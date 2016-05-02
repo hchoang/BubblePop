@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    Bubble *circleView = [[Bubble alloc] init];
+    [circleView setFrame:CGRectMake(10,20,100,100)];
+    [self.view addSubview:circleView];
 }
 
 - (void)didReceiveMemoryWarning {

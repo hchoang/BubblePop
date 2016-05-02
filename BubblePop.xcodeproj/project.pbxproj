@@ -16,6 +16,9 @@
 		C7CCC41F1CD701A5005FA5FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7CCC41D1CD701A5005FA5FF /* LaunchScreen.storyboard */; };
 		C7CCC42A1CD701A6005FA5FF /* BubblePopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCC4291CD701A6005FA5FF /* BubblePopTests.m */; };
 		C7CCC4351CD701A6005FA5FF /* BubblePopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCC4341CD701A6005FA5FF /* BubblePopUITests.m */; };
+		C7CCC4441CD70265005FA5FF /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCC4431CD70265005FA5FF /* Bubble.m */; };
+		C7CCC4471CD704F7005FA5FF /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCC4461CD704F7005FA5FF /* Player.m */; };
+		C7CCC44A1CD70873005FA5FF /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CCC4491CD70873005FA5FF /* Game.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		C7CCC4301CD701A6005FA5FF /* BubblePopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubblePopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7CCC4341CD701A6005FA5FF /* BubblePopUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubblePopUITests.m; sourceTree = "<group>"; };
 		C7CCC4361CD701A6005FA5FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7CCC4421CD70265005FA5FF /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bubble.h; sourceTree = "<group>"; };
+		C7CCC4431CD70265005FA5FF /* Bubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bubble.m; sourceTree = "<group>"; };
+		C7CCC4451CD704F7005FA5FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		C7CCC4461CD704F7005FA5FF /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		C7CCC4481CD70873005FA5FF /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		C7CCC4491CD70873005FA5FF /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +122,12 @@
 				C7CCC4201CD701A5005FA5FF /* Info.plist */,
 				C7CCC4181CD701A5005FA5FF /* BubblePop.xcdatamodeld */,
 				C7CCC40C1CD701A5005FA5FF /* Supporting Files */,
+				C7CCC4421CD70265005FA5FF /* Bubble.h */,
+				C7CCC4431CD70265005FA5FF /* Bubble.m */,
+				C7CCC4451CD704F7005FA5FF /* Player.h */,
+				C7CCC4461CD704F7005FA5FF /* Player.m */,
+				C7CCC4481CD70873005FA5FF /* Game.h */,
+				C7CCC4491CD70873005FA5FF /* Game.m */,
 			);
 			path = BubblePop;
 			sourceTree = "<group>";
@@ -278,7 +293,10 @@
 			files = (
 				C7CCC4141CD701A5005FA5FF /* ViewController.m in Sources */,
 				C7CCC41A1CD701A5005FA5FF /* BubblePop.xcdatamodeld in Sources */,
+				C7CCC4441CD70265005FA5FF /* Bubble.m in Sources */,
 				C7CCC4111CD701A5005FA5FF /* AppDelegate.m in Sources */,
+				C7CCC4471CD704F7005FA5FF /* Player.m in Sources */,
+				C7CCC44A1CD70873005FA5FF /* Game.m in Sources */,
 				C7CCC40E1CD701A5005FA5FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
