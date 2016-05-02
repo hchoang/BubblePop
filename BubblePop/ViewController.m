@@ -16,10 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    Bubble *circleView = [[Bubble alloc] init];
-    [circleView setFrame:CGRectMake(10,20,100,100)];
-    [self.view addSubview:circleView];
+    Game *game = [[Game alloc] init];
+    [game fillBubbleArray];
+    for (int i = 0; i < 20; i++) {
+        Bubble *bubble = [[game bubbleArray] objectAtIndex:i];
+        printf("x:%f - y:%f\n",[bubble frame].origin.x, [bubble frame].origin.y);
+        [bubble setBackgroundColor:[UIColor redColor]];
+        [self.view addSubview:bubble];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

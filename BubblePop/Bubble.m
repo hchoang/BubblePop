@@ -10,16 +10,13 @@
 
 @implementation Bubble
 
-@synthesize x = _x;
-@synthesize y = _y;
-@synthesize width = _width;
-@synthesize height = _height;
-
 -(id)init
 {
     self = [super init];
     self.alpha = 0.5;
     [self layer].cornerRadius = 50;
+    CGRect rect = [self populatePosition];
+    self.frame = rect;
     return self;
 }
 
@@ -28,6 +25,8 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
-    
+    CGFloat xTemp = (CGFloat) arc4random_uniform(screenWidth - 100);
+    CGFloat yTemp = (CGFloat) arc4random_uniform(screenHeight - 100);
+    return CGRectMake(xTemp, yTemp, 100, 100);
 }
 @end

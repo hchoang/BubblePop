@@ -62,6 +62,7 @@
 		C7CCC4461CD704F7005FA5FF /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		C7CCC4481CD70873005FA5FF /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		C7CCC4491CD70873005FA5FF /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		C7CCC44B1CD7A680005FA5FF /* constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +129,7 @@
 				C7CCC4461CD704F7005FA5FF /* Player.m */,
 				C7CCC4481CD70873005FA5FF /* Game.h */,
 				C7CCC4491CD70873005FA5FF /* Game.m */,
+				C7CCC44B1CD7A680005FA5FF /* constant.h */,
 			);
 			path = BubblePop;
 			sourceTree = "<group>";

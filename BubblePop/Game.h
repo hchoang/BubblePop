@@ -11,10 +11,8 @@
 
 @interface Game : NSObject
 
-@property NSArray *bubbles;
+@property NSMutableArray *bubbleArray;
 
-- (NSArray *)fillBubbleArray;
-- (Bubble *)generateBubble;
-- (CGRect)generateLocation;
+- (void)fillBubbleArray;
 
 @end

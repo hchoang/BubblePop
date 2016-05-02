@@ -11,10 +11,6 @@
 
 @interface Bubble : UIView
 @property UIColor *color;
-@property CGFloat x;
-@property CGFloat y;
-@property CGFloat width;
-@property CGFloat height;
 @property CGRect rect;
 
 @end

@@ -10,23 +10,14 @@
 
 @implementation Game
 
--(NSArray *)fillBubbleArray
+-(void)fillBubbleArray
 {
-    
-    return _bubbles;
-}
-
--(Bubble *)generateBubble
-{
-    Bubble *bubble = [[Bubble alloc] init];
-
-    
-    return bubble;
-}
-
--(CGRect)generateLocation
-{
-    return CGRectMake(10, 10, 100, 100);
+    for (int i = 0; i < 20; i++) {
+        Bubble *b = [[Bubble alloc] init];
+        printf("x: %f - y: %f\n", [b frame].origin.x, [b frame].origin.y);
+        [_bubbleArray addObject:b];
+    }
+    self.bubbleArray = _bubbleArray;
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Bubble.h"
+#import "Game.h"
 
 @interface ViewController : UIViewController
 
