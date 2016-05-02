@@ -113,6 +113,7 @@
 		C7CCC40B1CD701A5005FA5FF /* BubblePop */ = {
 			isa = PBXGroup;
 			children = (
+				C7CCC44C1CD814A9005FA5FF /* Model */,
 				C7CCC40F1CD701A5005FA5FF /* AppDelegate.h */,
 				C7CCC4101CD701A5005FA5FF /* AppDelegate.m */,
 				C7CCC4121CD701A5005FA5FF /* ViewController.h */,
@@ -158,6 +159,13 @@
 				C7CCC4361CD701A6005FA5FF /* Info.plist */,
 			);
 			path = BubblePopUITests;
+			sourceTree = "<group>";
+		};
+		C7CCC44C1CD814A9005FA5FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

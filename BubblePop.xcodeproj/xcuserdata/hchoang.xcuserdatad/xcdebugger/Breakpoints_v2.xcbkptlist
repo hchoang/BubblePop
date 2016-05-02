@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BubblePop/Game.m"
-            timestampString = "483896099.765971"
+            timestampString = "483924012.806988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "-fillBubbleArray"
             landmarkType = "5">
          </BreakpointContent>
