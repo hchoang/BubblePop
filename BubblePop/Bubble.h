@@ -13,4 +13,6 @@
 @property UIColor *color;
 @property CGRect rect;
 
+-(Boolean)isCollied:(Bubble *)bubble;
+
 @end

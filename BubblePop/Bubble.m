@@ -15,18 +15,22 @@
     self = [super init];
     self.alpha = 0.5;
     [self layer].cornerRadius = 50;
-    CGRect rect = [self populatePosition];
-    self.frame = rect;
     return self;
 }
 
-- (CGRect)populatePosition
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    CGFloat xTemp = (CGFloat) arc4random_uniform(screenWidth - 100);
-    CGFloat yTemp = (CGFloat) arc4random_uniform(screenHeight - 100);
-    return CGRectMake(xTemp, yTemp, 100, 100);
+    NSLog(@"the bubble has been touched\n");
+    NSLog(@"the color of the bubble is %@", self.backgroundColor.description);
+}
+
+-(Boolean)isCollied:(Bubble *)bubble
+{
+    if (CGRectIntersectsRect([self frame], [bubble frame])) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 @end
+

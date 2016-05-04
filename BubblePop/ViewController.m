@@ -18,9 +18,10 @@
     [super viewDidLoad];
     Game *game = [[Game alloc] init];
     [game fillBubbleArray];
-    for (int i = 0; i < 20; i++) {
-        Bubble *bubble = [[game bubbleArray] objectAtIndex:i];
-        [self.view addSubview:bubble];
+    
+    NSMutableArray *bubbles = [game bubbleArray];
+    for (Bubble *b in bubbles) {
+        [self.view addSubview:b];
     }
 }
 
@@ -28,5 +29,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end

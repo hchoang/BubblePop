@@ -10,6 +10,7 @@
 #import "Game.h"
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet Bubble *bubble;
 
 
 @end

@@ -11,8 +11,9 @@
 
 @interface Game : NSObject
 
-@property NSMutableArray *bubbleArray;
+@property (strong, nonatomic) NSMutableArray *bubbleArray;
 
 - (void)fillBubbleArray;
+- (CGRect)populateRandomPosition;
 
 @end
