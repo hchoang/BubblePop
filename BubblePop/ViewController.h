@@ -10,8 +10,8 @@
 #import "Game.h"
 
 @interface ViewController : UIViewController
-@property (strong, nonatomic) IBOutlet Bubble *bubble;
-
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 
 @end
 

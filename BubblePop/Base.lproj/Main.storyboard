@@ -17,32 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsy-De-iea">
-                                <rect key="frame" x="35" y="28" width="44" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to BubblePop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEd-wK-Mpo">
+                                <rect key="frame" x="211" y="179" width="179" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N33-9z-Pf6">
-                                <rect key="frame" x="16" y="57" width="83" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfs-s9-uf7" customClass="Bubble">
-                                <rect key="frame" x="35" y="96" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please type your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EpF-Kw-XA9">
+                                <rect key="frame" x="211" y="229" width="179" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-rn-ljn">
+                                <rect key="frame" x="261" y="285" width="78" height="30"/>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <segue destination="eg6-v2-8KB" kind="show" identifier="startGame" id="tMb-1Z-EEa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EpF-Kw-XA9" firstAttribute="top" secondItem="EEd-wK-Mpo" secondAttribute="bottom" constant="29" id="NKJ-i5-qlI"/>
+                            <constraint firstItem="EpF-Kw-XA9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="StJ-nH-Kaj"/>
+                            <constraint firstItem="EEd-wK-Mpo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cXA-Ax-ncq"/>
+                            <constraint firstItem="VhG-rn-ljn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gwV-JM-JHj"/>
+                            <constraint firstItem="EEd-wK-Mpo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="180" id="rWU-Ob-KAS"/>
+                            <constraint firstItem="VhG-rn-ljn" firstAttribute="top" secondItem="EpF-Kw-XA9" secondAttribute="bottom" constant="26" id="u3I-vf-bGe"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="bubble" destination="cfs-s9-uf7" id="YZb-rd-JUn"/>
+                        <outlet property="nameTextField" destination="EpF-Kw-XA9" id="e5N-eU-8op"/>
+                        <outlet property="startGameButton" destination="VhG-rn-ljn" id="Ia5-nk-h91"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266" y="323"/>
+            <point key="canvasLocation" x="190" y="377"/>
         </scene>
         <!--Board View Controller-->
         <scene sceneID="W1G-Ji-8y7">
@@ -55,12 +66,21 @@
                     <view key="view" contentMode="scaleToFill" id="k7B-wF-bwH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFY-9n-ihD" customClass="Bubble">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="bubble" destination="qFY-9n-ihD" id="08M-uZ-LqT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbk-2V-qeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="323"/>
+            <point key="canvasLocation" x="924" y="377"/>
         </scene>
     </scenes>
 </document>

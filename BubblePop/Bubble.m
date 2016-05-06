@@ -13,7 +13,6 @@
 -(id)init
 {
     self = [super init];
-    self.alpha = 0.5;
     [self layer].cornerRadius = 50;
     return self;
 }
@@ -22,6 +21,11 @@
 {
     NSLog(@"the bubble has been touched\n");
     NSLog(@"the color of the bubble is %@", self.backgroundColor.description);
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [self setAlpha:0.0];
+    [UIView commitAnimations];
 }
 
 -(Boolean)isCollied:(Bubble *)bubble
@@ -32,5 +36,6 @@
         return FALSE;
     }
 }
+
 @end
 

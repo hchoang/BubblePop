@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 @interface BoardViewController : UIViewController
+@property (weak, nonatomic) IBOutlet Bubble *bubble;
+@property NSTimer *timer;
+@property Game *game;
 
 @end

@@ -14,22 +14,33 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    Game *game = [[Game alloc] init];
-    [game fillBubbleArray];
-    
-    NSMutableArray *bubbles = [game bubbleArray];
-    for (Bubble *b in bubbles) {
-        [self.view addSubview:b];
-    }
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"startGame"]) {
+        if ([[[self nameTextField] text] isEqualToString:@""]) {
+            [[self nameTextField] becomeFirstResponder];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"Please enter your name before starting the game" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:ok];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            return false;
+        }
+    }
+    return true;
+}
 
 @end
