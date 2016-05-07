@@ -13,7 +13,8 @@
 -(id)init
 {
     self = [super init];
-    [self layer].cornerRadius = 50;
+    self.layer.cornerRadius = 50;
+    self.tag = 11;
     return self;
 }
 

@@ -14,8 +14,15 @@
 {
     [super viewDidLoad];
     self.game = [[Game alloc] init];
-    self.timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(addBubble) userInfo:nil repeats:YES];
+    [self.game fillBubbleArray];
+    for (Bubble *b in [self.game bubbleArray]) {
+        [self.view addSubview:b];
+    }
+    
+    
+    self.timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -24,12 +31,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addBubble
+- (void)updateView
 {
-    [self.game fillBubbleArray];
+    [self.game updateBubbleArray];
+    
+    NSArray *bubbleViews = [self.view subviews];
+    for (UIView *bubble in bubbleViews)
+    {
+        if (bubble.tag == 11 && ![self.game.bubbleArray containsObject:bubble])
+        {
+            [bubble removeFromSuperview];
+        }
+    }
+    
     for (Bubble *b in [self.game bubbleArray]) {
         [self.view addSubview:b];
     }
 }
+
+
 
 @end

@@ -11,6 +11,8 @@
 
 @interface BoardViewController : UIViewController
 @property (weak, nonatomic) IBOutlet Bubble *bubble;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property NSTimer *timer;
 @property Game *game;
 

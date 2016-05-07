@@ -15,5 +15,6 @@
 
 - (void)fillBubbleArray;
 - (CGRect)populateRandomPosition;
+- (void)updateBubbleArray;
 
 @end
