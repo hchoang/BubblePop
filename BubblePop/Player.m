@@ -10,4 +10,11 @@
 
 @implementation Player
 
+-(instancetype)init
+{
+    self = [super init];
+    self.point = 0;
+    return self;
+}
+
 @end

@@ -10,17 +10,25 @@
 
 @implementation BoardViewController
 
+int seconds;
+int secondsLeft;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    secondsLeft = 60;
     self.game = [[Game alloc] init];
-    [self.game fillBubbleArray];
+    [self.game updateBubbleArray];
+    
     for (Bubble *b in [self.game bubbleArray]) {
+        UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                              initWithTarget:self action:@selector(handleSingleTap:)];
+        singleTapGestureRecognizer.numberOfTapsRequired = 1;
+        [b addGestureRecognizer:singleTapGestureRecognizer];
         [self.view addSubview:b];
     }
-    
-    
-    self.timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
+
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     
 }
@@ -45,10 +53,32 @@
     }
     
     for (Bubble *b in [self.game bubbleArray]) {
+        UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                              initWithTarget:self action:@selector(handleSingleTap:)];
+        singleTapGestureRecognizer.numberOfTapsRequired = 1;
+        [b addGestureRecognizer:singleTapGestureRecognizer];
+
         [self.view addSubview:b];
+    }
+    
+    
+    if(secondsLeft > 0 ) {
+        secondsLeft-- ;
+        self.timerLabel.text = [NSString stringWithFormat:@"%02d", secondsLeft];
+    } else {
+        [self.timer invalidate];
     }
 }
 
-
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    Bubble *bubble = (Bubble *) recognizer.view;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [bubble setAlpha:0.0];
+    [UIView commitAnimations];
+    self.game.player.point += bubble.point;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.game.player.point];
+}
 
 @end

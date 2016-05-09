@@ -11,6 +11,7 @@
 
 @interface Bubble : UIView
 @property UIColor *color;
+@property int point;
 @property CGRect rect;
 
 -(Boolean)isCollied:(Bubble *)bubble;
