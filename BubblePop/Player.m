@@ -13,7 +13,7 @@
 -(instancetype)init
 {
     self = [super init];
-    self.point = 0;
+    self.score = 0;
     return self;
 }
 

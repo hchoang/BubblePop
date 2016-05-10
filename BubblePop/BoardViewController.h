@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Game.h"
+#import "AppDelegate.h"
 
 @interface BoardViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property NSTimer *timer;
-@property Game *game;
+
+@property (strong, nonatomic) NSTimer *timer;
+
+- (void) pauseTimer:(NSNotification *)notification;
+- (void) resumeTimer:(NSNotification *) notification;
 
 @end

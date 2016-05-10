@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Game.h"
+#import "AppDelegate.h"
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
+@property (weak, nonatomic) IBOutlet UIStepper *maxBubbleStepperView;
+@property (weak, nonatomic) IBOutlet UILabel *maxBubbleLabel;
+
+@property (strong, nonatomic) Game * game;
+
 
 @end
 

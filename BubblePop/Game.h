@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "constant.h"
 #import "Bubble.h"
 #import "Player.h"
 
@@ -14,9 +15,12 @@
 
 @property (strong, nonatomic) NSMutableArray *bubbleArray;
 @property (strong, nonatomic) Player *player;
+@property (strong, nonatomic) NSMutableArray * clickedBubbles;
+@property (strong, nonatomic) NSMutableArray * highScore;
+@property int maxBubble;
 
-- (void)updateBubbleArray;
-//- (CGRect)populateRandomPosition;
+- (NSArray *)updateBubbleArray;
 -(Bubble *)generateBubble;
-
+- (int) calculateScore: (Bubble *)bubble;
+- (void) saveScore;
 @end

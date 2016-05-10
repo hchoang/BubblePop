@@ -10,7 +10,7 @@
 
 @interface Player : NSObject
 
-@property NSString *name;
-@property int point;
+@property (nonatomic, strong) NSString *name;
+@property int score;
 
 @end

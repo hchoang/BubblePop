@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIkit.h>
+#import "constant.h"
 
 @interface Bubble : UIView
+
 @property UIColor *color;
-@property int point;
+@property int score;
 @property CGRect rect;
 
 -(Boolean)isCollied:(Bubble *)bubble;

@@ -16,6 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.game = [[Game alloc] init];
     // Override point for customization after application launch.
     return YES;
 }

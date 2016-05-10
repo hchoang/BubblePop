@@ -7,17 +7,16 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
-
-@end
+#import "Bubble.h"
 
 @implementation ViewController
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate * appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // load game object from appDelegate;
+    self.game = appDelegate.game;
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,6 +25,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ * Check if player enter name
+ */
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([identifier isEqualToString:@"startGame"]) {
@@ -39,8 +41,28 @@
             [self presentViewController:alertController animated:YES completion:nil];
             return false;
         }
+        self.game.player.name = self.nameTextField.text;
+        self.game.maxBubble = (int) [self.maxBubbleLabel.text integerValue];
     }
     return true;
+}
+
+/**
+ * Resign first responder from textField when user click enter
+ */
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+/**
+ * Update label when stepperView is clicked
+ * @param {UIStepper *} sender [description]
+ */
+- (IBAction)valueChange:(UIStepper *)sender {
+    int maxBubble = [sender value];
+    self.maxBubbleLabel.text = [NSString stringWithFormat:@"%d", maxBubble];
 }
 
 @end
