@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property (strong, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
 - (void) pauseTimer:(NSNotification *)notification;
 - (void) resumeTimer:(NSNotification *) notification;

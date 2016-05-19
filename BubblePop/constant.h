@@ -25,6 +25,7 @@
 #define SCORE_ROW_IDENTIFIER @"scoreRow"
 #define MAX_ROW 10 // Number display in
 #define GAME_DURATION 60
+#define COUNT_DOWN 3
 #define BUBBLE_TAG 11
 #define SCORE_LABEL_TAG 12
 

@@ -13,6 +13,7 @@
 Game * game;
 int seconds;
 int secondsLeft;
+int countDown;
 
 - (void)viewDidLoad
 {
@@ -29,22 +30,23 @@ int secondsLeft;
      */
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resumeTimer:) name:UIApplicationWillEnterForegroundNotification object:nil];
     secondsLeft = GAME_DURATION;
-    [game updateBubbleArray];
-    
+    countDown = COUNT_DOWN;
+//    [game updateBubbleArray];
+    [self.countDownLabel setText:[NSString stringWithFormat:@"%d", countDown]];
     /**
      * Add bubbles to view with animation
      */
-    for (Bubble *b in [game bubbleArray]) {
-        UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
-                                                              initWithTarget:self action:@selector(handleSingleTap:)];
-        singleTapGestureRecognizer.numberOfTapsRequired = 1;
-        [b addGestureRecognizer:singleTapGestureRecognizer];
-        [UIView transitionWithView:self.view
-                          duration:ANIMATION_DURATION
-                           options:UIViewAnimationOptionCurveEaseIn //any animation
-                        animations:^ { [self.view addSubview:b]; }
-                        completion:nil];
-    }
+//    for (Bubble *b in [game bubbleArray]) {
+//        UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+//                                                              initWithTarget:self action:@selector(handleSingleTap:)];
+//        singleTapGestureRecognizer.numberOfTapsRequired = 1;
+//        [b addGestureRecognizer:singleTapGestureRecognizer];
+//        [UIView transitionWithView:self.view
+//                          duration:ANIMATION_DURATION
+//                           options:UIViewAnimationOptionCurveEaseIn //any animation
+//                        animations:^ { [self.view addSubview:b]; }
+//                        completion:nil];
+//    }
 
     self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
@@ -68,63 +70,70 @@ int secondsLeft;
      * if not, continue update view
      * if yes, save player score and change to score board view
      */
-    if(secondsLeft > 0) {
-        secondsLeft--;
-        self.timerLabel.text = [NSString stringWithFormat:@"%02d", secondsLeft];
-        
-        NSArray *deleteBubbles = [game updateBubbleArray];
-        
-        for (Bubble *bubble in deleteBubbles) {
-            [UIView transitionWithView:self.view
-                              duration:ANIMATION_DURATION
-                               options:UIViewAnimationOptionTransitionCrossDissolve
-                            animations:^{
-                                [bubble removeFromSuperview];
-                            }
-                            completion:nil];
-
-        }
-        
-        NSArray *subView = [self.view subviews];
-        
-        for (Bubble *b in [game bubbleArray]) {
-            if (![subView containsObject:b]) {
-                UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
-                                                                      initWithTarget:self action:@selector(handleSingleTap:)];
-                singleTapGestureRecognizer.numberOfTapsRequired = 1;
-                [b addGestureRecognizer:singleTapGestureRecognizer];
-                [UIView transitionWithView:self.view duration:ANIMATION_DURATION
-                                   options:UIViewAnimationOptionTransitionCrossDissolve
-                                animations:^{
-                                    [self.view addSubview:b];
-                                } completion:nil];
-            }
-        }
-        
-        for (UIView *uiView in subView) {
-            if (uiView.tag == SCORE_LABEL_TAG) {
-                [UIView transitionWithView:self.view duration:ANIMATION_DURATION
-                                   options:UIViewAnimationOptionTransitionCrossDissolve
-                                animations:^{
-                                    [uiView removeFromSuperview];
-                                } completion:nil];
-            }
-        }
-        
-        if (secondsLeft < 20 && secondsLeft > 10) {
-            self.timerLabel.textColor = [UIColor orangeColor];
-        } else if (secondsLeft <= 10){
-            self.timerLabel.textColor = [UIColor redColor];
-        } else {
-            self.timerLabel.textColor = [UIColor greenColor];
-        }
-
+    if (countDown > 1) {
+        countDown -= 1;
+        [self.countDownLabel setText:[NSString stringWithFormat:@"%d", countDown]];
     } else {
-        [self.timer invalidate];
-        [game saveScore];
-        UIViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
-        [self presentViewController:controller animated:YES completion:nil];
+        [self.countDownLabel setText:@""];
+        if(secondsLeft > 0) {
+            secondsLeft--;
+            self.timerLabel.text = [NSString stringWithFormat:@"%02d", secondsLeft];
+            
+            NSArray *deleteBubbles = [game updateBubbleArray];
+            
+            for (Bubble *bubble in deleteBubbles) {
+                [UIView transitionWithView:self.view
+                                  duration:ANIMATION_DURATION
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:^{
+                                    [bubble removeFromSuperview];
+                                }
+                                completion:nil];
+                
+            }
+            
+            NSArray *subView = [self.view subviews];
+            
+            for (Bubble *b in [game bubbleArray]) {
+                if (![subView containsObject:b]) {
+                    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                                          initWithTarget:self action:@selector(handleSingleTap:)];
+                    singleTapGestureRecognizer.numberOfTapsRequired = 1;
+                    [b addGestureRecognizer:singleTapGestureRecognizer];
+                    [UIView transitionWithView:self.view duration:ANIMATION_DURATION
+                                       options:UIViewAnimationOptionTransitionCrossDissolve
+                                    animations:^{
+                                        [self.view addSubview:b];
+                                    } completion:nil];
+                }
+            }
+            
+            for (UIView *uiView in subView) {
+                if (uiView.tag == SCORE_LABEL_TAG) {
+                    [UIView transitionWithView:self.view duration:ANIMATION_DURATION
+                                       options:UIViewAnimationOptionTransitionCrossDissolve
+                                    animations:^{
+                                        [uiView removeFromSuperview];
+                                    } completion:nil];
+                }
+            }
+            
+            if (secondsLeft < 20 && secondsLeft > 10) {
+                self.timerLabel.textColor = [UIColor orangeColor];
+            } else if (secondsLeft <= 10){
+                self.timerLabel.textColor = [UIColor redColor];
+            } else {
+                self.timerLabel.textColor = [UIColor greenColor];
+            }
+            
+        } else {
+            [self.timer invalidate];
+            [game saveScore];
+            UIViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
     }
+    
 }
 
 /**
